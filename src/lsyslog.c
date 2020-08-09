@@ -100,7 +100,7 @@ static int lsyslog_epoll_event_client_fd (
             NULL
         );
         if (-1 == ret) {
-            syslog(LOG_ERR, "%s:%d: epoll_ctl: %s", __func__, __LINE__, strerror(errno));
+            printf("%s:%d: epoll_ctl: %s", __func__, __LINE__, strerror(errno));
             return -1;
         }
         
@@ -126,7 +126,7 @@ static int lsyslog_epoll_event_client_fd (
         }
     );
     if (-1 == ret) {
-        syslog(LOG_ERR, "%s:%d: epoll_ctl: %s", __func__, __LINE__, strerror(errno));
+        printf("%s:%d: epoll_ctl: %s", __func__, __LINE__, strerror(errno));
         return -1;
     }
 
@@ -173,7 +173,10 @@ static int lsyslog_epoll_handle_events (
 }
 
 
-int main(int argc, char *argv[])
+int main (
+    int argc,
+    char *argv[]
+)
 {
     int ret = 0;
     struct lsyslog_s lsyslog = {0};
